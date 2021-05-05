@@ -90,8 +90,11 @@ class Home extends React.Component {
         </Row>
         <Row className="justify-content-center mt-3">
           <Col xs={12} md={8}>
-            {this.state.selectedDish.rating < 5 ? (
-              <p>oh no rating is below 5</p> // no idea
+            {this.state.selectedDish &&
+            this.state.selectedDish.comments.some(
+              (comment) => comment.rating < 5
+            ) ? (
+              <p>all booked for today, very sorry</p>
             ) : (
               <ReservationForm />
             )}
